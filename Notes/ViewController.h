@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Note.h"
+#import "Model.h"
 
-@interface ViewController : UIViewController
-
-
+@interface ViewController : UIViewController <UITextFieldDelegate>
+-(void)tappedSave:(UIButton*)sender;
+-(void)doThatThing:(void(^)())completionHandler;
 @end
 
