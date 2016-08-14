@@ -102,9 +102,9 @@
     
     // Do any additional setup after loading the view, typically from a nib.
     
-    Note* note = [[Model sharedModel]loadNote];
-    self.notesField.text = note.title;
-    self.notesView.text = note.detail;
+    //Note* note = [[Model sharedModel]loadNote];
+    //self.notesField.text = note.title;
+    //self.notesView.text = note.detail;
  
     
     
@@ -197,18 +197,18 @@
 
 -(void)saveNote
 {
-    Note* note = [[Note alloc]initWithTitle:self.notesField.text detail:self.notesView.text];
-    [[Model sharedModel]saveNote:note];
-    
-    
-    //Adding visual alert for when user saves data
-    UIAlertController* saveAlert = [UIAlertController alertControllerWithTitle:@"Save Alert" message:@"The item was saved" preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* alertAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
-    
-    [saveAlert addAction:alertAction];
-    
-    [self presentViewController:saveAlert animated:NO completion:nil];
+//    Note* note = [[Note alloc]initWithTitle:self.notesField.text detail:self.notesView.text];
+//    [[Model sharedModel]saveNote:note];
+//    
+//    
+//    //Adding visual alert for when user saves data
+//    UIAlertController* saveAlert = [UIAlertController alertControllerWithTitle:@"Save Alert" message:@"The item was saved" preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    UIAlertAction* alertAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+//    
+//    [saveAlert addAction:alertAction];
+//    
+//    [self presentViewController:saveAlert animated:NO completion:nil];
     
 }
 

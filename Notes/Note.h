@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class Note;
+
 @interface Note : NSObject
 
 @property(strong, nonatomic)NSString* title;

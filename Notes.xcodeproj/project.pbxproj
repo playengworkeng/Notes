@@ -14,8 +14,20 @@
 		894F872D1D5D5AD300EB2B16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894F872B1D5D5AD300EB2B16 /* LaunchScreen.storyboard */; };
 		894F87361D5ECA6600EB2B16 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 894F87351D5ECA6600EB2B16 /* Model.m */; };
 		894F87391D5ECD0A00EB2B16 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 894F87381D5ECD0A00EB2B16 /* Note.m */; };
+		894F873C1D5FB32500EB2B16 /* Notes.m in Sources */ = {isa = PBXBuildFile; fileRef = 894F873B1D5FB32500EB2B16 /* Notes.m */; };
+		894F87451D60051200EB2B16 /* NotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 894F87441D60051200EB2B16 /* NotesTests.m */; };
 		CCF3A03620D95A004A5ED27A /* libPods-Notes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5C2E82BB5E37631C9FAC5C /* libPods-Notes.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		894F87471D60051200EB2B16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 894F87121D5D5AD300EB2B16 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 894F87191D5D5AD300EB2B16;
+			remoteInfo = Notes;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3A5C2E82BB5E37631C9FAC5C /* libPods-Notes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Notes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,6 +44,11 @@
 		894F87351D5ECA6600EB2B16 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		894F87371D5ECD0A00EB2B16 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
 		894F87381D5ECD0A00EB2B16 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		894F873A1D5FB32500EB2B16 /* Notes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notes.h; sourceTree = "<group>"; };
+		894F873B1D5FB32500EB2B16 /* Notes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notes.m; sourceTree = "<group>"; };
+		894F87421D60051200EB2B16 /* NotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		894F87441D60051200EB2B16 /* NotesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotesTests.m; sourceTree = "<group>"; };
+		894F87461D60051200EB2B16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D944841BBF5C8E7291735C58 /* Pods-Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Notes/Pods-Notes.debug.xcconfig"; sourceTree = "<group>"; };
 		E77173AA87C51D1E5DBFF978 /* Pods-Notes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Notes/Pods-Notes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -42,6 +59,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCF3A03620D95A004A5ED27A /* libPods-Notes.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		894F873F1D60051200EB2B16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				894F871C1D5D5AD300EB2B16 /* Notes */,
+				894F87431D60051200EB2B16 /* NotesTests */,
 				894F871B1D5D5AD300EB2B16 /* Products */,
 				3EB684B5A7A3E94D8A235DE6 /* Pods */,
 				AB20ECD3809C9A77A9F9F017 /* Frameworks */,
@@ -71,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				894F871A1D5D5AD300EB2B16 /* Notes.app */,
+				894F87421D60051200EB2B16 /* NotesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,14 +104,11 @@
 		894F871C1D5D5AD300EB2B16 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
-				894F87341D5ECA6600EB2B16 /* Model.h */,
-				894F87371D5ECD0A00EB2B16 /* Note.h */,
-				894F87381D5ECD0A00EB2B16 /* Note.m */,
-				894F87351D5ECA6600EB2B16 /* Model.m */,
 				894F87201D5D5AD300EB2B16 /* AppDelegate.h */,
 				894F87211D5D5AD300EB2B16 /* AppDelegate.m */,
 				894F87231D5D5AD300EB2B16 /* ViewController.h */,
 				894F87241D5D5AD300EB2B16 /* ViewController.m */,
+				894F873D1D60023B00EB2B16 /* Model */,
 				894F87291D5D5AD300EB2B16 /* Assets.xcassets */,
 				894F872B1D5D5AD300EB2B16 /* LaunchScreen.storyboard */,
 				894F872E1D5D5AD300EB2B16 /* Info.plist */,
@@ -100,6 +123,28 @@
 				894F871E1D5D5AD300EB2B16 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		894F873D1D60023B00EB2B16 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				894F87351D5ECA6600EB2B16 /* Model.m */,
+				894F87341D5ECA6600EB2B16 /* Model.h */,
+				894F873A1D5FB32500EB2B16 /* Notes.h */,
+				894F87371D5ECD0A00EB2B16 /* Note.h */,
+				894F87381D5ECD0A00EB2B16 /* Note.m */,
+				894F873B1D5FB32500EB2B16 /* Notes.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		894F87431D60051200EB2B16 /* NotesTests */ = {
+			isa = PBXGroup;
+			children = (
+				894F87441D60051200EB2B16 /* NotesTests.m */,
+				894F87461D60051200EB2B16 /* Info.plist */,
+			);
+			path = NotesTests;
 			sourceTree = "<group>";
 		};
 		AB20ECD3809C9A77A9F9F017 /* Frameworks */ = {
@@ -133,6 +178,24 @@
 			productReference = 894F871A1D5D5AD300EB2B16 /* Notes.app */;
 			productType = "com.apple.product-type.application";
 		};
+		894F87411D60051200EB2B16 /* NotesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 894F87491D60051200EB2B16 /* Build configuration list for PBXNativeTarget "NotesTests" */;
+			buildPhases = (
+				894F873E1D60051200EB2B16 /* Sources */,
+				894F873F1D60051200EB2B16 /* Frameworks */,
+				894F87401D60051200EB2B16 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				894F87481D60051200EB2B16 /* PBXTargetDependency */,
+			);
+			name = NotesTests;
+			productName = NotesTests;
+			productReference = 894F87421D60051200EB2B16 /* NotesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -145,6 +208,11 @@
 					894F87191D5D5AD300EB2B16 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 5P2MA4UM2J;
+					};
+					894F87411D60051200EB2B16 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 5P2MA4UM2J;
+						TestTargetID = 894F87191D5D5AD300EB2B16;
 					};
 				};
 			};
@@ -162,6 +230,7 @@
 			projectRoot = "";
 			targets = (
 				894F87191D5D5AD300EB2B16 /* Notes */,
+				894F87411D60051200EB2B16 /* NotesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -173,6 +242,13 @@
 			files = (
 				894F872D1D5D5AD300EB2B16 /* LaunchScreen.storyboard in Resources */,
 				894F872A1D5D5AD300EB2B16 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		894F87401D60051200EB2B16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,12 +310,29 @@
 				894F87391D5ECD0A00EB2B16 /* Note.m in Sources */,
 				894F87251D5D5AD300EB2B16 /* ViewController.m in Sources */,
 				894F87221D5D5AD300EB2B16 /* AppDelegate.m in Sources */,
+				894F873C1D5FB32500EB2B16 /* Notes.m in Sources */,
 				894F871F1D5D5AD300EB2B16 /* main.m in Sources */,
 				894F87361D5ECA6600EB2B16 /* Model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		894F873E1D60051200EB2B16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				894F87451D60051200EB2B16 /* NotesTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		894F87481D60051200EB2B16 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 894F87191D5D5AD300EB2B16 /* Notes */;
+			targetProxy = 894F87471D60051200EB2B16 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		894F872B1D5D5AD300EB2B16 /* LaunchScreen.storyboard */ = {
@@ -357,6 +450,30 @@
 			};
 			name = Release;
 		};
+		894F874A1D60051200EB2B16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NotesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkful.NotesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notes.app/Notes";
+			};
+			name = Debug;
+		};
+		894F874B1D60051200EB2B16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NotesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinkful.NotesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notes.app/Notes";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -377,6 +494,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		894F87491D60051200EB2B16 /* Build configuration list for PBXNativeTarget "NotesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				894F874A1D60051200EB2B16 /* Debug */,
+				894F874B1D60051200EB2B16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
