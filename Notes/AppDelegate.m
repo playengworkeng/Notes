@@ -8,9 +8,11 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "NotesTableViewController.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong)UIViewController* viewController;
+@property (nonatomic, strong)NotesTableViewController* notesTableViewController;
 
 @end
 
@@ -20,9 +22,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]init];
-    ViewController* viewController = [[ViewController alloc]init];
+    //ViewController* viewController = [[ViewController alloc]init];
+    NotesTableViewController* notesTableViewController = [[NotesTableViewController alloc]init];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = viewController;
+    self.window.rootViewController = notesTableViewController;
 
     [self.window makeKeyAndVisible];
     
