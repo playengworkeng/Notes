@@ -10,6 +10,7 @@
 #import "Note.h"
 #import "Notes.h"
 #import "Model.h"
+#import "ViewController.h"
 #import "NoteTableViewCell.h"
 
 @interface NotesTableViewController : UITableViewController

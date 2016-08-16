@@ -37,9 +37,17 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"Edit note";
     
 
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,6 +84,31 @@
     
     
     return cell;
+}
+
+
+
+-(NSArray*)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    return [NSArray array];
+    
+    
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    
+    Note* note = [self.notes getNoteAtIndex:1];
+    
+    ViewController* notesViewController = [[ViewController alloc]initWithNote:note];
+    
+    [self.navigationController pushViewController:notesViewController animated:YES];
+    
+    
 }
 
 

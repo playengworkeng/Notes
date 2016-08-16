@@ -15,10 +15,14 @@
 @property(weak, nonatomic)UIButton* notesButton;
 @property(weak, nonatomic)UITextView* notesView;
 @property(copy, nonatomic)void (^completionBlockHandler)();
+@property(strong, nonatomic)Note* note;
 
 @end
 
 @implementation ViewController
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -106,8 +110,31 @@
     //self.notesField.text = note.title;
     //self.notesView.text = note.detail;
  
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"Edit note";
     
     
+    if (self.note != nil)
+    {
+        
+        self.notesField.text = self.note.title;
+        self.notesView.text = self.note.detail;
+    }
+}
+
+-(id)initWithNote:(Note*)note {
+    
+    
+    if(!self)
+    {
+    
+    self = [[ViewController alloc]init];
+        
+    }
+    
+    self.note = note;
+    return self;
 }
 
 
@@ -210,6 +237,13 @@
 //    
 //    [self presentViewController:saveAlert animated:NO completion:nil];
     
+    
+    
+//    New way to save a note after editing
+    self.note.title = self.notesField.text;
+    self.note.detail = self.notesView.text;
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 
@@ -270,6 +304,7 @@
     
     
 }
+
 
 
 -(void)doThatThing:(void (^)())completionHandler

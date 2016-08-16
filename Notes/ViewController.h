@@ -13,5 +13,6 @@
 @interface ViewController : UIViewController <UITextFieldDelegate>
 -(void)tappedSave:(UIButton*)sender;
 -(void)doThatThing:(void(^)())completionHandler;
+-(id)initWithNote:(Note*)note;
 @end
 
