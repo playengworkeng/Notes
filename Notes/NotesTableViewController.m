@@ -12,6 +12,8 @@
 @interface NotesTableViewController ()
 
 @property(strong, nonatomic)Notes* notes;
+@property(strong, nonatomic)Note* noteToAdd;
+
 @end
 
 @implementation NotesTableViewController
@@ -23,7 +25,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
     [self.tableView registerClass:[NoteTableViewCell class] forCellReuseIdentifier:@"note"];
 //    self.notes = [[Notes alloc]initWithNotes:@[
@@ -33,22 +35,69 @@
 //                                        ];
     
     self.notes = [[Model sharedModel]notes];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNote:)];
+
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"Edit note";
-    
+  
+    self.title = @"Notes";
 
+}
+
+
+-(void)addNote:(id)sender {
+    
+    self.noteToAdd = [[Note alloc]initWithTitle:@"" detail:@""];
+    
+    ViewController* viewController = [[ViewController alloc]initWithNote:self.noteToAdd];
+    
+    [self.navigationController pushViewController:viewController animated:YES];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+    
+    if (self.noteToAdd && ![self.noteToAdd isBlank])
+    {
+    
+        [[[Model sharedModel]notes]addNote:self.noteToAdd];
+        
+        if(!self.notes.saved)
+        {
+            [[Model sharedModel]saveNotes];
+            self.notes.saved= NO;
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"NoteSaved" object:self];
+        }
+      
+    
+    }
+    
+    self.noteToAdd = nil;
 }
+
+
+
+-(void)viewDidAppear:(BOOL)animated {
+    
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveLog:) name:@"NoteSaved" object:nil];
+    
+}
+
+
+-(void)viewDidDisappear:(BOOL)animated {
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -79,10 +128,6 @@
     cell.textLabel.text = note.title;
     cell.detailTextLabel.text = note.detail;
     
-    
-    
-    
-    
     return cell;
 }
 
@@ -100,8 +145,6 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
-    
     Note* note = [self.notes getNoteAtIndex:1];
     
     ViewController* notesViewController = [[ViewController alloc]initWithNote:note];
@@ -112,31 +155,53 @@
 }
 
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
+     //Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
+         //Delete the row from the data source
+        if(!self.notes.saved)
+        {
+            [[Model sharedModel]saveNotes];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"NoteSaved" object:self];
+        }
+        [[[Model sharedModel]notes]deleteNodeAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
-*/
 
-/*
+
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    
+    if(!self.notes.saved)
+    {
+        [[Model sharedModel]saveNotes];
+      
+         NSLog(@"%d",self.notes.saved);
+         [[NSNotificationCenter defaultCenter]postNotificationName:@"NoteSaved" object:self];
+        
+        
+    }
+    [[[Model sharedModel]notes]moveFromIndex:fromIndexPath.row toIndex:toIndexPath.row];
+    
+    
 }
-*/
+
+
+-(void)saveLog:(NSNotification*)notification {
+    
+    self.notes.saved = YES;
+    NSLog(@"%d",self.notes.saved);
+}
 
 /*
 // Override to support conditional rearranging of the table view.

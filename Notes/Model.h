@@ -16,7 +16,9 @@
 @property(strong, nonatomic)Notes* notes;
 +(Model*)sharedModel;
 
-//-(void)saveNote:(Note*)note;
+-(void)saveNotes;
+-(Notes*)notes;
+//-(void)SaveNote:(Note*)note;
 //-(Note*)loadNote;
 
 @end

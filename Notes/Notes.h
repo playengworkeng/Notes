@@ -11,11 +11,13 @@
 @interface Notes : NSObject
 
 @property (strong, nonatomic)NSMutableArray* notes;
+@property BOOL saved;
 -(id)initWithNotes:(NSArray*)notes;
 -(NSInteger)count;
 -(Note*)getNoteAtIndex:(NSInteger)index;
 -(void)addNote:(Note*)note;
 -(Note*)deleteNodeAtIndex:(NSInteger)index;
 -(void)moveFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex;
+
 
 @end

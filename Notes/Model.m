@@ -31,11 +31,7 @@
         return _notes;
     }
     //Note* aNote = [Note alloc]init
-    _notes= [[Notes alloc]initWithNotes:@[
-                                          [[Note alloc]initWithTitle:@"Note1" detail:@"Detail1"],
-                                          [[Note alloc]initWithTitle:@"Note2" detail:@"Detail2"]
-                                          ]
-             ];
+    _notes= [[Notes alloc ]initWithNotes:[self loadNotes]];
     
     
     return _notes;
@@ -77,5 +73,37 @@
 //    
 //    
 //}
+
+-(void)saveNotes {
+    
+    [NSKeyedArchiver archiveRootObject:self.notes.notes toFile:[self filePath]];
+    NSLog(@"Saving");
+    
+    
+    
+}
+
+
+-(NSArray*)loadNotes {
+    
+    NSArray* notesArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self filePath]];
+    
+    if(!notesArray)
+    {
+        notesArray = [NSArray array];
+    }
+    
+    return notesArray;
+}
+
+-(NSString*)filePath {
+    
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* documentsDirectory = [paths objectAtIndex:0];
+    
+    
+    return ([documentsDirectory stringByAppendingString:@"noteDdata"]);
+    
+}
 
 @end

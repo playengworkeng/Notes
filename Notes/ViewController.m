@@ -52,12 +52,12 @@
     
     [self.view addSubview: label];
     [self.view addSubview: textField];
-    [self.view addSubview: textButton];
+    //[self.view addSubview: textButton];
     [self.view addSubview: textView];
     
     self.notesLabel = label;
     self.notesField = textField;
-    self.notesButton = textButton;
+    //self.notesButton = textButton;
     self.notesView = textView;
     
     [self.notesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -110,6 +110,8 @@
     //self.notesField.text = note.title;
     //self.notesView.text = note.detail;
  
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(tappedSave:)];
+    
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"Edit note";

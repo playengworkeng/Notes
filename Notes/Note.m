@@ -24,4 +24,35 @@
     return self;
     
 }
+
+
+
+-(BOOL)isBlank
+{
+    
+    
+    return !(self.title && self.title.length>0 && self.detail && self.detail.length>0);
+}
+
+
+#pragma mark - NSCoding
+
+-(void)encodeWithCoder:(NSCoder *)coder {
+    
+    [coder encodeObject:self.title forKey:@"title"];
+    [coder encodeObject:self.detail forKey:@"detail"];
+}
+
+
+
+
+-(id)initWithCoder:(NSCoder *)coder {
+    
+    self = [super init];
+    self.title = [coder decodeObjectForKey:@"title"];
+    self.detail = [coder decodeObjectForKey:@"detail"];
+    
+    return self;
+    
+}
 @end
