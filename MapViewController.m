@@ -135,6 +135,14 @@
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     
     
+    
+    UIImage* uberBadge = [UIImage imageNamed:@"Badge"];
+    UIButton* leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton setImage:uberBadge forState:UIControlStateNormal];
+    leftButton.frame = CGRectMake(0, 0, uberBadge.size.width, uberBadge.size.height);
+    leftButton.tag = 1;
+    
+    
     if([annotation isKindOfClass:[MKUserLocation class]])
     {
         return nil;
@@ -151,12 +159,14 @@
             
             pinView = [[MKPinAnnotationView alloc]init];
             pinView.pinTintColor = [UIColor purpleColor];
+            pinView.leftCalloutAccessoryView = leftButton;
             pinView.canShowCallout = YES;
             
         }
         
         else{
             pinView.pinTintColor = [UIColor purpleColor];
+            pinView.leftCalloutAccessoryView = leftButton;
             pinView.annotation = annotation;
      
             
@@ -174,6 +184,34 @@
 
 
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    
+    MKPointAnnotation* annotation = (MKPointAnnotation*)view.annotation;
+    
+
+    
+    
+    if(control.tag == 1)
+    {
+        
+        if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"uber://"]])
+        {
+            NSLog(@"%f, %f",annotation.coordinate.longitude, annotation.coordinate.latitude);
+            NSString* url = [NSString stringWithFormat:@"uber://?action=setPickup&pickup=my_location&&dropoff[latitude]=%f&dropoff[longitude]=%f", (float)annotation.coordinate.latitude, (float)annotation.coordinate.longitude];
+            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
+            
+            
+            
+        } else{
+            
+            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://m.uber.com"]];
+             NSLog(@"%f, %f",annotation.coordinate.latitude, annotation.coordinate.longitude);
+        }
+        
+        
+    } else{
+        
+        
+    }
     
 
 }
