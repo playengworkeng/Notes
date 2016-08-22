@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "NotesTableViewController.h"
+#import "MapViewController.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong)UIViewController* viewController;
@@ -24,13 +25,25 @@
     self.window = [[UIWindow alloc]init];
     //ViewController* viewController = [[ViewController alloc]init];
     NotesTableViewController* notesTableViewController = [[NotesTableViewController alloc]init];
-    UINavigationController*  navigationViewController = [[UINavigationController alloc]initWithRootViewController:notesTableViewController];
+    MapViewController* mapViewController = [[MapViewController alloc]init];
+    
+    UINavigationController*  navigationViewController1 = [[UINavigationController alloc]initWithRootViewController:notesTableViewController];
+    
+    UINavigationController* navigationViewController2 = [[UINavigationController alloc]initWithRootViewController:mapViewController];
+    
+    UITabBarController* tabBarController=[[UITabBarController alloc]init];
     
     self.window.backgroundColor = [UIColor whiteColor];
     
-    self.window.rootViewController = navigationViewController;
+    
 
     [self.window makeKeyAndVisible];
+    
+    NSArray* tabControllerArray = [NSArray arrayWithObjects:navigationViewController1, navigationViewController2, nil];
+    
+    tabBarController.viewControllers = tabControllerArray;
+    
+    self.window.rootViewController = tabBarController;
     
     
     return YES;

@@ -15,14 +15,13 @@
 @property(weak, nonatomic)UIButton* notesButton;
 @property(weak, nonatomic)UITextView* notesView;
 @property(copy, nonatomic)void (^completionBlockHandler)();
+@property(strong, nonatomic)CLLocationManager* locationManager;
 @property(strong, nonatomic)Note* note;
+
 
 @end
 
 @implementation ViewController
-
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -116,6 +115,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"Edit note";
     
+    //Initialize a locationManager and start logging location
+    self.locationManager = [[CLLocationManager alloc]init];
+    [self startUpdatingUserLocations];
     
     if (self.note != nil)
     {
@@ -242,8 +244,11 @@
     
     
 //    New way to save a note after editing
-    self.note.title = self.notesField.text;
+    self.note.title  = self.notesField.text;
     self.note.detail = self.notesView.text;
+    self.note.latitude  = @(self.locationManager.location.coordinate.latitude);
+    self.note.longitude = @(self.locationManager.location.coordinate.longitude);
+    
     [self.navigationController popViewControllerAnimated:YES];
     
 }
@@ -260,7 +265,7 @@
     }
     
     
-    else if(self.notesView.text.length <=0)
+    else if(self.notesView.text.length <= 0)
     {
         
         wheresTheProblem = @"The problem is in notesView";
@@ -314,6 +319,44 @@
     self.completionBlockHandler = completionHandler;
     
     self.completionBlockHandler();
+    
+}
+
+
+
+-(void)startUpdatingUserLocations{
+    
+    if(![CLLocationManager locationServicesEnabled])
+    {
+        
+        return;
+    }
+
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+        
+    }
+    
+    
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    self.locationManager.distanceFilter = 500;
+    self.locationManager.delegate = self;
+    [self.locationManager startUpdatingLocation];
+    
+
+}
+
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    
+    
+    NSLog(@"%@",[locations lastObject]);
+    
+    CLLocation* lastObject = [locations lastObject];
+    
+    self.note.latitude = @(lastObject.coordinate.latitude);
+    self.note.longitude = @(lastObject.coordinate.longitude);
+
     
 }
 @end

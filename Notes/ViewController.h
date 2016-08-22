@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Note.h"
 #import "Model.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface ViewController : UIViewController <UITextFieldDelegate>
+@interface ViewController : UIViewController <UITextFieldDelegate, CLLocationManagerDelegate>
 -(void)tappedSave:(UIButton*)sender;
 -(void)doThatThing:(void(^)())completionHandler;
 -(id)initWithNote:(Note*)note;

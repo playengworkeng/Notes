@@ -18,6 +18,9 @@
 		894F87451D60051200EB2B16 /* NotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 894F87441D60051200EB2B16 /* NotesTests.m */; };
 		894F874E1D60DF9300EB2B16 /* NotesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894F874D1D60DF9300EB2B16 /* NotesTableViewController.m */; };
 		894F87521D6163BB00EB2B16 /* NoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894F87511D6163BB00EB2B16 /* NoteTableViewCell.m */; };
+		894F87A01D680FF000EB2B16 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894F879F1D680FF000EB2B16 /* MapViewController.m */; };
+		894F87A31D68C5A400EB2B16 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894F87A21D68C5A400EB2B16 /* CoreLocation.framework */; };
+		894F87A51D68C5F700EB2B16 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894F87A41D68C5F700EB2B16 /* MapKit.framework */; };
 		CCF3A03620D95A004A5ED27A /* libPods-Notes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5C2E82BB5E37631C9FAC5C /* libPods-Notes.a */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,10 @@
 		894F874D1D60DF9300EB2B16 /* NotesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesTableViewController.m; sourceTree = "<group>"; };
 		894F87501D6163BB00EB2B16 /* NoteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTableViewCell.h; sourceTree = "<group>"; };
 		894F87511D6163BB00EB2B16 /* NoteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTableViewCell.m; sourceTree = "<group>"; };
+		894F879E1D680FF000EB2B16 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ../MapViewController.h; sourceTree = "<group>"; };
+		894F879F1D680FF000EB2B16 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ../MapViewController.m; sourceTree = "<group>"; };
+		894F87A21D68C5A400EB2B16 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		894F87A41D68C5F700EB2B16 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D944841BBF5C8E7291735C58 /* Pods-Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Notes/Pods-Notes.debug.xcconfig"; sourceTree = "<group>"; };
 		E77173AA87C51D1E5DBFF978 /* Pods-Notes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Notes/Pods-Notes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +71,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894F87A51D68C5F700EB2B16 /* MapKit.framework in Frameworks */,
+				894F87A31D68C5A400EB2B16 /* CoreLocation.framework in Frameworks */,
 				CCF3A03620D95A004A5ED27A /* libPods-Notes.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +123,7 @@
 				894F87211D5D5AD300EB2B16 /* AppDelegate.m */,
 				894F87231D5D5AD300EB2B16 /* ViewController.h */,
 				894F87241D5D5AD300EB2B16 /* ViewController.m */,
+				894F87A11D68100300EB2B16 /* Map */,
 				894F873D1D60023B00EB2B16 /* Model */,
 				894F87291D5D5AD300EB2B16 /* Assets.xcassets */,
 				894F872B1D5D5AD300EB2B16 /* LaunchScreen.storyboard */,
@@ -135,13 +145,13 @@
 		894F873D1D60023B00EB2B16 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				894F87341D5ECA6600EB2B16 /* Model.h */,
 				894F87351D5ECA6600EB2B16 /* Model.m */,
 				894F87501D6163BB00EB2B16 /* NoteTableViewCell.h */,
 				894F87511D6163BB00EB2B16 /* NoteTableViewCell.m */,
-				894F87341D5ECA6600EB2B16 /* Model.h */,
-				894F873A1D5FB32500EB2B16 /* Notes.h */,
 				894F87371D5ECD0A00EB2B16 /* Note.h */,
 				894F87381D5ECD0A00EB2B16 /* Note.m */,
+				894F873A1D5FB32500EB2B16 /* Notes.h */,
 				894F873B1D5FB32500EB2B16 /* Notes.m */,
 			);
 			name = Model;
@@ -165,9 +175,20 @@
 			name = NotesController;
 			sourceTree = "<group>";
 		};
+		894F87A11D68100300EB2B16 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				894F879E1D680FF000EB2B16 /* MapViewController.h */,
+				894F879F1D680FF000EB2B16 /* MapViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
 		AB20ECD3809C9A77A9F9F017 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				894F87A41D68C5F700EB2B16 /* MapKit.framework */,
+				894F87A21D68C5A400EB2B16 /* CoreLocation.framework */,
 				3A5C2E82BB5E37631C9FAC5C /* libPods-Notes.a */,
 			);
 			name = Frameworks;
@@ -328,6 +349,7 @@
 				894F87391D5ECD0A00EB2B16 /* Note.m in Sources */,
 				894F87251D5D5AD300EB2B16 /* ViewController.m in Sources */,
 				894F87221D5D5AD300EB2B16 /* AppDelegate.m in Sources */,
+				894F87A01D680FF000EB2B16 /* MapViewController.m in Sources */,
 				894F873C1D5FB32500EB2B16 /* Notes.m in Sources */,
 				894F874E1D60DF9300EB2B16 /* NotesTableViewController.m in Sources */,
 				894F871F1D5D5AD300EB2B16 /* main.m in Sources */,

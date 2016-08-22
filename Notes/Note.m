@@ -10,7 +10,7 @@
 
 @implementation Note
 
--(id)initWithTitle:(NSString*)title detail:(NSString*)detail
+-(id)initWithTitle:(NSString*)title detail:(NSString*)detail latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude
 {
     self = [super init];
     if(!self)
@@ -20,7 +20,8 @@
     
     self.title = title;
     self.detail = detail;
-    
+    self.latitude = latitude;
+    self.longitude = longitude;
     return self;
     
 }
@@ -29,7 +30,6 @@
 
 -(BOOL)isBlank
 {
-    
     
     return !(self.title && self.title.length>0 && self.detail && self.detail.length>0);
 }
@@ -41,8 +41,9 @@
     
     [coder encodeObject:self.title forKey:@"title"];
     [coder encodeObject:self.detail forKey:@"detail"];
+    [coder encodeObject:self.latitude forKey:@"latitude"];
+    [coder encodeObject:self.longitude forKey:@"longitude"];
 }
-
 
 
 
@@ -51,6 +52,8 @@
     self = [super init];
     self.title = [coder decodeObjectForKey:@"title"];
     self.detail = [coder decodeObjectForKey:@"detail"];
+    self.latitude = [coder decodeObjectForKey:@"latitude"];
+    self.longitude = [coder decodeObjectForKey:@"longitude"];
     
     return self;
     

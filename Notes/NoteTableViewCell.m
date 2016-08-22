@@ -16,9 +16,8 @@
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     
     return self;
-    
-    
 }
+
 
 - (void)awakeFromNib {
     // Initialization code

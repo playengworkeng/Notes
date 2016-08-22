@@ -7,6 +7,7 @@
 //
 
 #import "NotesTableViewController.h"
+#import  <CoreLocation/CoreLocation.h>
 
 
 @interface NotesTableViewController ()
@@ -17,6 +18,26 @@
 @end
 
 @implementation NotesTableViewController
+
+
+-(id)init{
+    
+    self = [super init];
+    
+    if (!self){
+        
+        return nil;
+    }
+    
+    self.title = @"Notes";
+    
+    self.tabBarItem =[[UITabBarItem alloc]initWithTitle:@"Notes" image:[UIImage imageNamed:@"Note"] tag:0 ];
+    
+
+    return self;
+    
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,16 +55,16 @@
 //                                          ]
 //                                        ];
     
+    
     self.notes = [[Model sharedModel]notes];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNote:)];
 
-    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
-  
+    
     self.title = @"Notes";
 
 }
@@ -51,7 +72,8 @@
 
 -(void)addNote:(id)sender {
     
-    self.noteToAdd = [[Note alloc]initWithTitle:@"" detail:@""];
+    //add longitude and latitude to note
+    self.noteToAdd = [[Note alloc]initWithTitle:@"" detail:@"" latitude:@(42.358280) longitude:@(-71.060966)];
     
     ViewController* viewController = [[ViewController alloc]initWithNote:self.noteToAdd];
     
@@ -59,10 +81,11 @@
     
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
+
+-(void)viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
-    [self.tableView reloadData];
+    
     
     if (self.noteToAdd && ![self.noteToAdd isBlank])
     {
@@ -72,12 +95,13 @@
         if(!self.notes.saved)
         {
             [[Model sharedModel]saveNotes];
-            self.notes.saved= NO;
+            self.notes.saved= YES;
             [[NSNotificationCenter defaultCenter]postNotificationName:@"NoteSaved" object:self];
         }
-      
     
     }
+    
+    [self.tableView reloadData];
     
     self.noteToAdd = nil;
 }
@@ -104,8 +128,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
 
+#pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
     return 1;
@@ -138,7 +162,6 @@
     
     return [NSArray array];
     
-    
 }
 
 
@@ -150,7 +173,6 @@
     ViewController* notesViewController = [[ViewController alloc]initWithNote:note];
     
     [self.navigationController pushViewController:notesViewController animated:YES];
-    
     
 }
 
